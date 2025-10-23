@@ -3,7 +3,10 @@ const title = "Blog"
 
 const txt = "Something"
 const n = 1000
-const simpler = true
+
+// define some colors here you want to repeat
+// const colors = ["red", "white", "green"]
+const colors = ["red", "orange", "yellow", "green", "cyan", "blue", "violet"]
 ---
 
 <html lang="en">
@@ -13,6 +16,11 @@ const simpler = true
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
         <title>{title}</title>
+        <style define:vars={{colors}}>
+            .repeated {
+                text-shadow: 1px 1px black;
+            }
+        </style>
 	</head>
 	<body>
         <a href="/">Home</a>
@@ -30,19 +38,16 @@ const simpler = true
         <p>Nice. I can now change 2 HTML elements by changing a variable.</p>
         <p>But we can do more! ...Here's "{txt}" repeated is {n} times!</p>
 
-        {
-            simpler
-            ?
-            <ol>
-                {Array(n).fill(<li>{txt}</li>)}
-            </ol>
-            :
-            <ul>
-                {Array(n).fill().map((_, i) => (
-                    <li>{txt} ({i + 1}.)</li>
-                ))}
-            </ul>
-        }
+        <ol>
+            {Array(n).fill(0).map((_, i) => (
+                <li
+                    style={"color: " + colors[i % colors.length]}
+                    class="repeated"
+                >
+                    {txt}
+                </li>
+            ))}
+        </ol>
 
 	</body>
 </html>
