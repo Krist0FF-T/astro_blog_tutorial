@@ -1,5 +1,7 @@
 ---
-// yo! I'll continue learning Astro!
+import "../styles/global.css"
+import Navigation from "../components/Navigation.astro"
+import Header from "../components/Header.astro"
 ---
 
 <html lang="en">
@@ -11,12 +13,14 @@
 		<title>Astro</title>
 	</head>
 	<body>
-        <a href="/">Home</a>
-        <a href="/about/">About</a>
-        <a href="/blog/">Blog</a>
+        <Header />
 
 		<h1>Home</h1>
         <p>There's no place like ~/</p>
+
+        <footer>
+            <p>haha</p>
+        </footer>
 
 	</body>
 </html>
